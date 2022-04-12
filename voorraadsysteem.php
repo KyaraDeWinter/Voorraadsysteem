@@ -84,9 +84,13 @@ class Product {
           }
 
           public function Totaal() {
-            $this->prijs = $this->prijs * $this->voorraad + 1.05;
-        }
-    }
+            $this->prijs = $this->prijs * $this->voorraad * 1.05;
+          }
+
+          public function Lengte() {
+              
+          }
+     }
     
     echo "<b>Voorraadsysteem</b><br><br>";
     $product = new Product(12345, 'Bring Me The Horizon, Post Human: Survival Horror', 56, 5, 10, 'Actief');

@@ -82,6 +82,10 @@ class Product {
           function get_filmStudio() {
             return $this->filmStudio;
           }
+
+          public function Totaal() {
+            $this->prijs = $this->prijs * $this->voorraad + 1.05;
+        }
     }
     
     echo "<b>Voorraadsysteem</b><br><br>";

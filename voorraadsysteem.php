@@ -1,19 +1,19 @@
 <?php
 class Product {
-    private $itemnr;
-    private $naam;
-    private $aantalInVoorraad;
-    private $minimumVoorraad;
-    private $prijs;
-    private $status;
+    public $itemnr = 1;
+    protected $naam;
+    protected $aantalInVoorraad;
+    protected $minimumVoorraad;
+    protected $prijs;
+    protected $actief;
 
-    function __construct($itemnr, $naam, $aantalInVoorraad, $minimumVoorraad, $prijs, $status) {
+    function __construct($itemnr, $naam, $aantalInVoorraad, $minimumVoorraad, $prijs, $actief) {
         $this->itemnr = $itemnr;
         $this->naam = $naam;
         $this->aantalInVoorraad = $aantalInVoorraad;
         $this->minimumVoorraad = $minimumVoorraad;
         $this->prijs = $prijs;
-        $this->status = $status;
+        $this->actief = $actief;
       }
 
       function get_itemnr() {
@@ -36,18 +36,20 @@ class Product {
         return $this->prijs;
       }
 
-      function get_status() {
-        return $this->status;
+      function get_actief() {
+        return $this->actief;
       }
 
       public function __toString()
       {
-        return "Itemnummer: " . $this->itemnr . "<br>Naam van product: " . $this->naam . "<br>Aantal in Voorraad: " . $this->aantalInVoorraad . "<br>Minimum Voorraad: " . $this->minimumVoorraad . "<br>Prijs: " . $this->prijs . "<br>Status: " . $this->status;
+        return "Itemnummer: " . $this->itemnr . "<br>Naam van product: " . $this->naam . "<br>Aantal in Voorraad: " . $this->aantalInVoorraad . "<br>Minimum Voorraad: " . $this->minimumVoorraad . "<br>Prijs: " . $this->prijs . "<br>Status: " . $this->actief . "<br><br>";
       }
 
       public function Ophogen() {
-        if ($status == true) {
-            echo "Voorraad is opgehoogd!";
+        if ($actief == true) {
+            $this->aantalInVoorraad + $OpgegevenAantal;
+          } else {
+            echo "Dit product is niet actief waardoor de voorraad niet kan worden opgehoogd!";
           }
       }
 
@@ -65,10 +67,11 @@ class Product {
         private $jaarUitgifte;
         private $filmStudio;
 
-        function __construct($lengteMinuten, $jaarUitgifte, $filmStudio) {
+        function __construct($itemnr, $naam, $aantalInVoorraad, $minimumVoorraad, $prijs, $actief, $lengteMinuten, $jaarUitgifte, $filmStudio) {
+            parent::__construct($itemnr, $naam, $aantalInVoorraad, $minimumVoorraad, $prijs, $actief);
             $this->lengteMinuten = $lengteMinuten;
             $this->jaarUitgifte = $jaarUitgifte;
-            $this->aantalInVoorraad = $aantalInVoorraad;
+            $this->filmStudio = $filmStudio;
           }
     
           function get_lengteMinuten() {
@@ -83,18 +86,64 @@ class Product {
             return $this->filmStudio;
           }
 
+          public function __toString()
+          {
+            return "Type Product: DVD<br>" . "Itemnummer: " . $this->itemnr . "<br>Naam van product: " . $this->naam . "<br>Aantal in Voorraad: " . $this->aantalInVoorraad . "<br>Minimum Voorraad: " . $this->minimumVoorraad . "<br>Prijs: " . $this->prijs . "<br>Status: " . $this->actief . "<br>Lente in Minuten: " . $this->lengteMinuten . "<br>Jaar van Uitgifte: " . $this->jaarUitgifte . "<br>Filmstudio: " . $this->filmStudio . "<br><br>";
+          }
+
           public function Totaal() {
-            $this->prijs = $this->prijs * $this->voorraad * 1.05;
+            $this->totaal = $this->prijs * $this->voorraad * 1.05;
           }
 
           public function Lengte() {
               
           }
      }
+
+     class CD extends Product {
+      private $artiest;
+      private $aantalSongs;
+      private $label;
+
+      function __construct($itemnr, $naam, $aantalInVoorraad, $minimumVoorraad, $prijs, $actief, $artiest, $aantalSongs, $label) {
+          parent::__construct($itemnr, $naam, $aantalInVoorraad, $minimumVoorraad, $prijs, $actief); 
+          $this->artiest = $artiest;
+          $this->aantalSongs = $aantalSongs;
+          $this->label = $label;
+        }
+  
+        function get_lengteMinuten() {
+          return $this->lengteMinuten;
+        }
+  
+        function get_jaarUitgifte() {
+          return $this->jaarUitgifte;
+        }
+  
+        function get_filmStudio() {
+          return $this->filmStudio;
+        }
+
+        public function __toString()
+        {
+          return "Type Product: CD<br>" . "Itemnummer: " . $this->itemnr . "<br>Naam van product: " . $this->naam . "<br>Aantal in Voorraad: " . $this->aantalInVoorraad . "<br>Minimum Voorraad: " . $this->minimumVoorraad . "<br>Prijs: " . $this->prijs . "<br>Status: " . $this->actief . "<br>Artiest: " . $this->artiest . "<br>Aantal Nummers: " . $this->aantalSongs . "<br>Label: " . $this->label . "<br><br>";
+        }
+
+        public function Totaal() {
+          $this->prijs = $this->prijs * $this->voorraad * 1.05;
+        }
+
+        public function Lengte() {
+            
+        }
+   }
     
     echo "<b>Voorraadsysteem</b><br><br>";
-    $product = new Product(12345, 'Bring Me The Horizon, Post Human: Survival Horror', 56, 5, 10, 'Actief');
-    echo $product;
+    $product1 = new DVD(2, 'BTS Memories', 12, 3, 35, 'Actief', 120, 2021, 'HYBE');
+    $product2 = new CD(3, 'Post Human: Survival Horror', 12, 3, 35, 'Actief', 'Bring Me The Horizon', 9, 'Sony Music');
+
+    echo $product1;
+    echo $product2;
 
 
 ?>

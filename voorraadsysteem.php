@@ -150,10 +150,8 @@ class Product {
     
     echo "<b>Voorraadsysteem</b><br><br>";
     $product1 = new DVD(2, 'BTS Memories', 12, 3, 35, 'Actief', 120, 2021, 'HYBE');
-    $product2 = new CD(3, 'Post Human: Survival Horror', 12, 3, 35, 'Actief', 'Bring Me The Horizon', 9, 'Sony Music');
+    $product2 = new CD(3, 'Post Human: Survival Horror', 12, 3, 15, 'Actief', 'Bring Me The Horizon', 9, 'Sony Music');
 
     echo $product1;
     echo $product2;
-
-
 ?>

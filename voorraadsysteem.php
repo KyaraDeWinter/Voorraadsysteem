@@ -139,7 +139,7 @@ class Product {
           return "Type Product: CD<br>" . "Itemnummer: " . $this->itemnr . "<br>Naam van product: " . $this->naam . "<br>Aantal in Voorraad: " . $this->aantalInVoorraad . "<br>Minimum Voorraad: " . $this->minimumVoorraad . "<br>Prijs: " . $this->prijs . "<br>Status: " . $this->actief . "<br>Artiest: " . $this->artiest . "<br>Aantal Nummers: " . $this->aantalSongs . "<br>Label: " . $this->label . "<br><br>";
         }
 
-        public function Totaal() {
+        public function Totaal($prijs) {
           $this->prijs = $this->prijs * $this->voorraad * 1.05;
         }
 
@@ -151,6 +151,8 @@ class Product {
     echo "<b>Voorraadsysteem</b><br><br>";
     $product1 = new DVD(2, 'BTS Memories', 12, 3, 35, 'Actief', 120, 2021, 'HYBE');
     $product2 = new CD(3, 'Post Human: Survival Horror', 12, 3, 15, 'Actief', 'Bring Me The Horizon', 9, 'Sony Music');
+
+    echo "<b>Voorraadsysteem</b><br><br>";
 
     echo $product1;
     echo $product2;

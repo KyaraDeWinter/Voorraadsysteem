@@ -31,9 +31,5 @@
           public function Totaal() {
             return "Totaalprijs van voorraad CD: " . $this->prijs = $this->prijs * $this->aantalInVoorraad . "<br>";
           }
-  
-          public function Lengte() {
-              
-          }
      }
 ?>

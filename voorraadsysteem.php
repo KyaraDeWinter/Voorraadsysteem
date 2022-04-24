@@ -68,7 +68,7 @@ class Product {
       }
 
       public function Totaal() {
-          $this->prijs = $this->prijs * $this->voorraad;
+        return "Totaalprijs van voorraad: " . $this->prijs = $this->prijs * $this->aantalInVoorraad . "<br>";
       }
     }
 
@@ -103,17 +103,17 @@ class Product {
 
           // totale voorraad vermedigvuldigd met 1.05
           public function Totaal() {
-            $this->totaal = $this->prijs * $this->voorraad * 1.05;
+            return "Totaalprijs van voorraad DVD: " . $this->totaal = $this->prijs * $this->aantalInVoorraad * 1.05 . "<br>";
           }
 
           // opmaak van lengte in uren:minuten
-          public function Lengte($tijd, $format = '%02d:%02d') {
-            if ($tijd < 1) {
-                return;
+          static function Lengte($minuten) {
+            if ($minuten <= 0) {
+              return '00:00';
+            } else {
+              return sprintf("%02d",floor($minuten / 60)) . ":" . sprintf("%02d",str_pad(($minuten % 60), 2, "0", STR_PAD_LEFT));
             }
-            $uur = floor($tijd / 60);
-            $minuut = ($tijd % 60);
-            return sprintf($format, $uur, $minuut);
+
         }
      }
 
@@ -147,7 +147,7 @@ class Product {
         }
 
         public function Totaal() {
-          $this->prijs = $this->prijs * $this->voorraad * 1.05;
+          return "Totaalprijs van voorraad CD: " . $this->prijs = $this->prijs * $this->aantalInVoorraad . "<br>";
         }
 
         public function Lengte() {
@@ -156,9 +156,12 @@ class Product {
    }
     
     echo "<b>Voorraadsysteem</b><br><br>";
-    $product1 = new DVD(2, 'BTS Memories', 12, 3, 35, 'Actief', 120, 2021, 'HYBE');
+    $product1 = new DVD(2, 'BTS Memories', 12, 3, 35, 'Actief', DVD::Lengte(135), 2021, 'HYBE');
     $product2 = new CD(3, 'Post Human: Survival Horror', 12, 3, 15, 'Actief', 'Bring Me The Horizon', 9, 'Sony Music');
 
     echo $product1;
     echo $product2;
+
+    echo $product1->Totaal();
+    echo $product2->Totaal();
 ?>

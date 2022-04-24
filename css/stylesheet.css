@@ -1,0 +1,23 @@
+* {
+    margin: auto;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+}
+
+.card {
+    margin-top: 2rem;
+    padding: 1rem;
+    width: 20rem;
+    box-shadow: 10px 10px 34px 0px rgba(199, 199, 199, 0.75);
+    -webkit-box-shadow: 10px 10px 34px 0px rgba(199, 199, 199, 0.75);
+    -moz-box-shadow: 10px 10px 34px 0px rgba(199, 199, 199, 0.75);
+    border: none !important;
+}

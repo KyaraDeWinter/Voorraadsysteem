@@ -21,7 +21,7 @@
 
     <title>Voorraadsysteem</title>
   </head>
-  <body>
+  <body class="body">
     <container>
         <h1 class="title">Voorraadsysteem</h1>
         <div class="card">

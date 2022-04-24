@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+.body {
+    background: rgb(255,255,255);
+    background: linear-gradient(167deg, rgba(255,255,255,0.6337885495995272) 37%, rgba(205,205,205,0.8130602582830007) 100%);
+}
+
 .container {
     display: flex;
     justify-content: center;

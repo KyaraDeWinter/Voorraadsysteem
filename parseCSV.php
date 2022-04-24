@@ -1,31 +1,17 @@
 <?php
-class ParseCSV {
-    public $filenaam;
-    private $header;
-    private $data=[];
-
-    public funtion __construct($filenaam='') {
-        if($filenaam != '') {
-            $this->filenaam = $filenaam;
-        }
+echo '<table border="1">';
+$start_row = 1;
+if (($csv_file = fopen("voorraad.csv", "r")) !== FALSE) {
+  while (($read_data = fgetcsv($csv_file, 1000, ",")) !== FALSE) {
+    $column_count = count($read_data);
+	echo '<tr>';
+    $start_row++;
+    for ($c=0; $c < $column_count; $c++) {
+        echo "<td>".$read_data[$c] . "</td>";
     }
-
-    public function parse() {
-        $file - fopen($this->filenaam, 'r');
-        while(!feaf($file)) {
-            $row = fgetcsv($file, 0, ',');
-            if($row == [NULL] || $row === FALSE) { continue;}
-            if(!$this->header) {
-                $this->header = $row;
-            } else {
-              $this->data[] = array_combine($this->header, $row);
-            }
-        }
-        fclose($file);
-
-        return $this->data;
-    }
+	echo '</tr>';
+  }
+  fclose($csv_file);
 }
-
-
+echo '</table>';
 ?>
